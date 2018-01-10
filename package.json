@@ -1,0 +1,11 @@
+{
+  "name": "lorca",
+  "version": "1.0.0",
+  "description": "nlp for Spanish",
+  "main": "lorca.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Domingo",
+  "license": "MIT"
+}
