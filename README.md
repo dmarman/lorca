@@ -1,15 +1,15 @@
-#Lorca.js
+# Lorca.js
 Lorca is a NLP library for Spanish written in javascript.
 
-##Installation
-###Client-side
+## Installation
+### Client-side
 
 Download lorca.js from this repository and inclue it in your html. Start using it right away.
 
-###Server-side
+### Server-side
 Not suported yet, but soon.
 
-##Text tokenization
+## Text tokenization
 
 ```javascript
 var doc = lorca('En verano hace calor. En invierno hace frío');
