@@ -68,6 +68,8 @@ doc.words().syllables().get();
 
 ## Concordance
 
+Get the word frequency of a document. The concordance method accepts the mode ```'relative'``` which outputs the relative frequency of the words. It is posible to sort the output by frequency and to shorten the output array with the method ```sort()```.
+
 ```javascript
 var doc = lorca('En verano hace calor. En invierno hace frío';
 
@@ -76,6 +78,9 @@ doc.concordance().get();
 
 doc.concordance().sort().get();
 // [ en: 2, hace: 2, verano: 1, calor: 1, invierno: 1, 'frío': 1 ]
+
+doc.concordance('relative').sort().get();
+// [ en: 0.25, hace: 0.25, verano: 0.125 calor: 0.125, invierno: 0.125, 'frío': 0.125 ]
 
 doc.concordance().sort(3).get();
 // [ en: 2, hace: 2, verano: 1 ]

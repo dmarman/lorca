@@ -447,7 +447,7 @@ class Lorca
 
     } 
 
-    concordance()
+    concordance(mode)
     {
         var tokens = this.words().get();
         var concordance = [];
@@ -457,6 +457,12 @@ class Lorca
                 concordance[tokens[i]] += 1; 
             } else {
                 concordance[tokens[i]] = 1;
+            }
+        }
+
+        if(mode == 'relative'){
+            for(var token in concordance){
+                concordance[token] = concordance[token]/Object.keys(tokens).length;
             }
         }
         
@@ -496,7 +502,7 @@ class Lorca
 
 var doc = lorca('En verano hace calor. En invierno hace frío.');
 
-console.log(doc.concordance().sort(3).get());
+console.log(doc.concordance('relative').sort().get());
 
 //lorca('this is text').syllabes()
 //lorca('this is text').concordance();
