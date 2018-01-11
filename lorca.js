@@ -91,27 +91,35 @@ class Lorca
     }
 
     syllables()
-    {
+    {      
+        var arr = [];
         if(this.out instanceof Array){
-            for(var i = 0; i < this.out.length; i++){
-                //this.out[i] = this.trimWords(this.out[i]);
+            for(var i = 0; i < this.out.length; i++){ 
+                if(this.out[i] instanceof Array){
+                    for(var j = 0; j < this.out[i].length; j++){
+                        this.out[i][j] = this.trimSyllables(this.out[i][j]);
+                    }
+                } else {
+                    this.out[i] = this.trimSyllables(this.out[i]);                
+                }
             }
         } else {
             this.out = this.trimSyllables(this.out);
         }
+
        
        return this;
     }
 
-    trimSyllables()
+    trimSyllables(word)
     {
         var stressedFound = false;
         var stressed = 0;
         var letterAccent = -1;
 
-        var wordLength = this.out.length;
+        var wordLength = word.length;
         var positions = [];
-        var word = this.out;
+        var word = word;
 
         function process () {
             var numSyl = 0;
@@ -425,8 +433,8 @@ class Lorca
          //   return positions;
         //};
 
-     
         var syllables = [];
+
         for (var i = 0; i < positions.length; i++) {
             var start = positions[i];
             var end = wordLength;
@@ -436,18 +444,19 @@ class Lorca
             var seq = word.slice(start, end);
             syllables.push(seq);
         }
-        this.out = syllables;
 
-        return this.out;
+        return syllables;
 
     } 
+
+
 }
     
 
 
 //---------------------------------------
 
-console.log(lorca('hola que <h1> tal. Yo bien').syllables().get());
+console.log(lorca('hola que tal. Yo bien').sentences().words().syllables().get());
 
 //lorca('this is text').syllabes()
 //lorca('this is text').concordance();
