@@ -456,7 +456,9 @@ class Lorca
 
 //---------------------------------------
 
-console.log(lorca('hola que tal. Yo bien').sentences().words().syllables().get());
+var doc = lorca('En verano hace calor. En invierno hace frío');
+
+console.log(doc.syllables().get());
 
 //lorca('this is text').syllabes()
 //lorca('this is text').concordance();
