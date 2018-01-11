@@ -92,7 +92,6 @@ class Lorca
 
     syllables()
     {      
-        var arr = [];
         if(this.out instanceof Array){
             for(var i = 0; i < this.out.length; i++){ 
                 if(this.out[i] instanceof Array){
@@ -107,7 +106,6 @@ class Lorca
             this.out = this.trimSyllables(this.out);
         }
 
-       
        return this;
     }
 
@@ -441,7 +439,7 @@ class Lorca
             if (positions.length > i+1) {
                 end = positions[i + 1];
             }
-            var seq = word.slice(start, end);
+            var seq = word.slice(start, end).replace(/ /, '').toLowerCase();
             syllables.push(seq);
         }
 
@@ -449,16 +447,56 @@ class Lorca
 
     } 
 
+    concordance()
+    {
+        var tokens = this.words().get();
+        var concordance = [];
+
+        for(var i = 0; i < tokens.length; i++){
+            if(concordance.hasOwnProperty(tokens[i])){
+                concordance[tokens[i]] += 1; 
+            } else {
+                concordance[tokens[i]] = 1;
+            }
+        }
+        
+        this.out = concordance;
+
+        return this;
+    }
+
+    sort(listMaxLength)
+    {
+        var sorted = [];
+        var keys = Object.keys(this.out);
+        var arr = this.out;
+       
+        keys.sort(function(a, b) {
+            return arr[b] - arr[a];
+        });
+
+        if(listMaxLength == undefined || listMaxLength > keys.length){
+            listMaxLength = keys.length;
+        }
+
+        for(var i = 0; i < listMaxLength; i++){
+            sorted[keys[i]] = this.out[keys[i]];
+        }
+        
+        this.out = sorted;
+
+        return this;
+    }
+
 
 }
     
 
-
 //---------------------------------------
 
-var doc = lorca('En verano hace calor. En invierno hace frío');
+var doc = lorca('En verano hace calor. En invierno hace frío.');
 
-console.log(doc.syllables().get());
+console.log(doc.concordance().sort(3).get());
 
 //lorca('this is text').syllabes()
 //lorca('this is text').concordance();
