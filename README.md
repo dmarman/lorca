@@ -28,6 +28,13 @@ doc.words().get();
 doc.syllables().get();
 // [ 'En ', 've', 'ra', 'no', ' ha', 'ce ', 'ca', 'lor.', 
 //   'En', ' in', 'vier', 'no', ' ha', 'ce ','frí', 'o.' ]
+
+doc.uniqueWords().get();
+// [ 'en', 'verano', 'hace', 'calor', 'invierno', 'frío' ]
+
+doc.onceWords().get();
+// [ 'verano', 'calor', 'invierno', 'frío' ]
+
 ```
 
 Group the output by sentence, word or both.
