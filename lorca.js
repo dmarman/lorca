@@ -56,6 +56,8 @@ class Lorca
         if (this.out.slice(-1) != '.') {
             this.out += "."; // Add final terminator, just in case it's missing.
         }
+
+        this.text = this.out;
      
         return this;
     }
@@ -494,6 +496,32 @@ class Lorca
         return this;
     }
 
+    wordsPerSentence()
+    {
+        var sentences = this.trimSentences(this.text).length;
+        var words = this.trimWords(this.text).length;
+        
+        this.out = words/sentences;
+        
+        return this;
+    }
+
+    syllablesPerWord()
+    {
+        var syllables = this.trimSyllables(this.text).length;
+        var words = this.trimWords(this.text).length;
+
+        this.out = syllables/words;
+
+        return this;
+    }
+
+    syllablesPerSentence()
+    {
+        this.out = this.wordsPerSentence().get()*this.syllablesPerWord().get();
+
+        return this;
+    }
 
 }
     
@@ -502,7 +530,8 @@ class Lorca
 
 var doc = lorca('En verano hace calor. En invierno hace frío.');
 
-console.log(doc.concordance('relative').sort().get());
+console.log(doc.syllablesPerSentence().get());
+    //console.log(doc.wordsPerSentence().get());
 
 //lorca('this is text').syllabes()
 //lorca('this is text').concordance();

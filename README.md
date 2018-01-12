@@ -87,5 +87,29 @@ doc.concordance().sort(3).get();
 
 ```
 
+## Statistics
+
+Get basic statistics of a text.
+
+```javascript
+var doc = lorca('En verano hace calor. En invierno hace frío';
+
+doc.words().get().length;
+// 8
+
+doc.sentences().get().length;
+// 2
+
+doc.wordsPerSentece().get();
+// 4
+
+doc.syllablesPerWord().get()
+// 2
+
+doc.syllablesPerSentence().get()
+// 8
+
+```
+
 
 
