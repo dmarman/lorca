@@ -34,7 +34,19 @@ doc.uniqueWords().get();
 
 doc.onceWords().get();
 // [ 'verano', 'calor', 'invierno', 'frío' ]
+```
 
+Extract prepositions from text, sentences or words.
+
+```javascript
+doc.prepositions().get();
+// [ 'en', 'en' ]
+
+doc.sentences().prepositions().get();
+// [ [ 'en' ], [ 'en' ] ]
+
+doc.words().prepositions().get();
+// [ [ 'en' ], [], [], [], [ 'en' ], [], [], [] ]
 ```
 
 Group the output by sentence, word or both.
@@ -91,7 +103,6 @@ doc.concordance('relative').sort().get();
 
 doc.concordance().sort(3).get();
 // [ en: 2, hace: 2, verano: 1 ]
-
 ```
 
 ## Statistics
@@ -107,7 +118,7 @@ doc.words().get().length;
 doc.sentences().get().length;
 // 2
 
-doc.wordsPerSentece().get();
+doc.wordsPerSentence().get();
 // 4
 
 doc.syllablesPerWord().get()
@@ -116,6 +127,17 @@ doc.syllablesPerWord().get()
 doc.syllablesPerSentence().get()
 // 8
 
+doc.uniqueWords().percentage().get();
+// 0.75
+
+doc.onceWords().percentage().get();
+// 0.5
+
+doc.prepositions().percentage().get();
+// 0.25
+
+doc.sentences().prepositions().percentage().get();
+// [ 0.25, 0.25 ]
 ```
 
 

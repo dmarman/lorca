@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 function lorca(input)
 {
@@ -113,6 +113,23 @@ class Lorca
         for(var token in concordance){
             if(concordance[token] === 1){
                 this.out.push(token);
+            }
+        }
+
+        return this;
+    }
+
+    percentage()
+    {
+        var totalWords = this.trimWords(this.text).length;
+        var outputWords = this.out.length;
+        var sentences = this.trimSentences(this.text);
+
+        for(var i = 0; i < this.out.length; i++){
+            if(this.out[i] instanceof Array){
+               this.out[i] = this.out[i].length/this.trimWords(sentences[i]).length;
+            } else {
+                this.out = outputWords/totalWords;
             }
         }
 
@@ -550,6 +567,33 @@ class Lorca
         return this;
     }
 
+    prepositions()
+    {
+        var prepositionRegex = /\b(a|ante|bajo|cabe|con|contra|de|desde|en|entre|hacia|hasta|para|por|según|sin|so|sobre|tras)\b/gi;
+
+        var prepositionLocRegex = /\b(acerca de|al lado de|alrededor de|antes de|a pesar de|cerca de||con arreglo a|con objeto de|debajo de|delante de|dentro de|después de|detrás de|encima de|en cuanto a|enfrente de|en virtud de|frente a|fuera de|gracias a|junto a|lejos de|por culpa de)\b/gi;
+
+        if(this.out instanceof Array) {
+            for(var i = 0; i < this.out.length; i++){
+                this.out[i] = this.out[i].match(prepositionRegex) || [];
+            }
+        } else {
+            this.out = this.out.match(prepositionRegex) || [];
+        }
+
+        for(var n = 0; n < this.out.length; n++){
+            if(this.out[n] instanceof Array){
+                for(var k = 0; k < this.out[n].length; k++){
+                    this.out[n][k] = this.out[n][k].toLowerCase();
+                }
+            } else {
+                this.out[n] = this.out[n].toLowerCase();
+            }
+        }
+
+        return this;
+    }
+
 }
     
 
@@ -557,8 +601,5 @@ class Lorca
 
 var doc = lorca('En verano hace calor. En invierno hace frío.');
 
-console.log(doc.onceWords().get());
-    //console.log(doc.wordsPerSentence().get());
+console.log(doc.prepositions().percentage().get());
 
-//lorca('this is text').syllabes()
-//lorca('this is text').concordance();
