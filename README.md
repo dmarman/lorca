@@ -205,6 +205,19 @@ doc.ifsz().grade().get();
 // Bastante fácil
 ```
 
+## Reading Time
+
+Get the reading time of a text in seconds. You can pass a reading speed as
+an argument in the ```readingtime(400)```  in words per minute. If no reading
+speed is given, it will use default value of 220 wpm.
+
+```javascript
+var doc = lorca('El niño ha sido castigado. La madre lo ha castigado.');
+
+doc.readingTime();
+// 2.72
+```
+
 ## Search
 
 Search any word in the text. You can use Regex too.

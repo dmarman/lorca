@@ -722,10 +722,17 @@ class Lorca
         return this.out;
     }
 
+    readingTime(readingSpeed)
+    {
+        var speed = readingSpeed || 220;
+
+        return 60*this.words().get().length/speed;
+    }
+
 }
 
 //---------------------------------------
 
 var doc = lorca('El niño ha sido castigado. La madre lo ha castigado.');
 
-console.log(doc.sentences().isPassive().get());
+console.log(doc.readingTime());
