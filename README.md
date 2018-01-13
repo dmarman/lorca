@@ -70,6 +70,18 @@ doc.sentences().pronouns().percentage().get();
 // [ 0.4, 0.3333333333333333 ]
 ```
 
+Extract adverbs from text, sentences or words.
+
+```javascript
+var doc = lorca('En verano hace realmente calor. En invierno hace frío');
+
+doc.adverbs().get();
+[ 'realmente' ]
+
+doc.sentences().adverbs().get();
+// [ [ 'realmente' ], [] ]
+```
+
 Group the output by sentence, word or both.
 
 ```javascript

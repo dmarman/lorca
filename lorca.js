@@ -569,10 +569,10 @@ class Lorca
 
     prepositions()
     {
-        var prepositionRegex = /( |\b|)(a|ante|bajo|cabe|con|contra|de|desde|en|entre|hacia|hasta|para|por|según|sin|so|sobre|tras)( |\b|)/gi;
+        var prepositionRegex = /( |\b)(a|ante|bajo|cabe|con|contra|de|desde|en|entre|hacia|hasta|para|por|según|sin|so|sobre|tras)( |\b)/gi;
 
         // TODO add locuciones prepositivas
-        var prepositionLocRegex = /( |\b|)(acerca de|al lado de|alrededor de|antes de|a pesar de|cerca de||con arreglo a|con objeto de|debajo de|delante de|dentro de|después de|detrás de|encima de|en cuanto a|enfrente de|en virtud de|frente a|fuera de|gracias a|junto a|lejos de|por culpa de)( |\b|)/gi;
+        var prepositionLocRegex = /( |\b)(acerca de|al lado de|alrededor de|antes de|a pesar de|cerca de|con arreglo a|con objeto de|debajo de|delante de|dentro de|después de|detrás de|encima de|en cuanto a|enfrente de|en virtud de|frente a|fuera de|gracias a|junto a|lejos de|por culpa de)( |\b)/gi;
 
         if(this.out instanceof Array) {
             for(var i = 0; i < this.out.length; i++){
@@ -599,10 +599,10 @@ class Lorca
     {
         //TODO palabra con acento como míote ará match con mío, el acento no va bien
         //TODO add other pronouns
-        var tonicRegex = /( |\b|)(yo|tú|vos|usted|él|ella|ello|nosotros|nosotras|ustedes|ellos|ellas|mí|conmigo|ti|contigo|consigo)( |\b|)/gi;
-        var posesiveRegex = /( |\b|)(mío|mía|míos|mías|tuyo|tuya|tuyos|tuyas|suyo|suya|suyos|suyas|nuestro|nuestra|nuestros|nuestras|vuestro|vuestra|vuestros|vuestras|suyo|suya|suyos|suyas)( |\b|)/gi;
-        var demostrativeRegex = /( |\b|)(esta|este|esto|estos|estas|ese|esa|eso|esos|esas|aquel|aquella|aquello|aquellos|aquellas)( |\b|)/gi;
-        var indefiniteRegex = /( |\b|)(uno|una|unos|unas|alguno|alguna|algo|algunos|algunas|ninguno|ninguna|nada|ningunos|ningunas|poco|poca|pocos|pocas|escaso|escasa|escasos|escasas|mucho|mucha|muchos|muchas|demasiado|demasiada|demasiados|demasiadas|todo|toda|todos|todas|varios|varias|otro|otra|otros|otras|mismo|misma|mismos|mismas|tan|tanto|tanta|tantos|tantas|alguien|nadie|cualquiera|quienquiera|demás|cualesquiera|quienesquiera)( |\b|)/gi;
+        var tonicRegex = /( |\b)(yo|tú|vos|usted|él|ella|ello|nosotros|nosotras|ustedes|ellos|ellas|mí|conmigo|ti|contigo|consigo)( |\b)/gi;
+        var posesiveRegex = /( |\b)(mío|mía|míos|mías|tuyo|tuya|tuyos|tuyas|suyo|suya|suyos|suyas|nuestro|nuestra|nuestros|nuestras|vuestro|vuestra|vuestros|vuestras|suyo|suya|suyos|suyas)( |\b)/gi;
+        var demostrativeRegex = /( |\b)(esta|este|esto|estos|estas|ese|esa|eso|esos|esas|aquel|aquella|aquello|aquellos|aquellas)( |\b)/gi;
+        var indefiniteRegex = /( |\b)(uno|una|unos|unas|alguno|alguna|algo|algunos|algunas|ninguno|ninguna|nada|ningunos|ningunas|poco|poca|pocos|pocas|escaso|escasa|escasos|escasas|mucho|mucha|muchos|muchas|demasiado|demasiada|demasiados|demasiadas|todo|toda|todos|todas|varios|varias|otro|otra|otros|otras|mismo|misma|mismos|mismas|tan|tanto|tanta|tantos|tantas|alguien|nadie|cualquiera|quienquiera|demás|cualesquiera|quienesquiera)( |\b)/gi;
 
         if(this.out instanceof Array) {
             for(var i = 0; i < this.out.length; i++){
@@ -610,6 +610,31 @@ class Lorca
             }
         } else {
             this.out = this.out.match(tonicRegex) || [];
+        }
+
+        for(var n = 0; n < this.out.length; n++){
+            if(this.out[n] instanceof Array){
+                for(var k = 0; k < this.out[n].length; k++){
+                    this.out[n][k] = this.out[n][k].toLowerCase().replace(/ /g, '');
+                }
+            } else {
+                this.out[n] = this.out[n].toLowerCase().replace(/ /g, '');
+            }
+        }
+
+        return this;
+    }
+
+    adverbs()
+    {
+        var adverbRegex = /[a-zA-Z0-9áéíóúàèìòùñç]+mente\b/gi;
+
+        if(this.out instanceof Array) {
+            for(var i = 0; i < this.out.length; i++){
+                this.out[i] = this.out[i].match(adverbRegex) || [];
+            }
+        } else {
+            this.out = this.out.match(adverbRegex) || [];
         }
 
         for(var n = 0; n < this.out.length; n++){
@@ -661,6 +686,6 @@ class Lorca
 
 //---------------------------------------
 
-var doc = lorca('En verano hace calor. En invierno hace frío');
+var doc = lorca('En verano hace realmente calor. En invierno hace frío');
 
-console.log(doc.ifsz().grade().get());
+console.log(doc.adverbs().get());
