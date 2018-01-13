@@ -625,10 +625,42 @@ class Lorca
         return this;
     }
 
+    ifsz()
+    {
+        var syllablesPerWord = this.syllablesPerWord().get();
+        var wordsPerSentence = this.wordsPerSentence().get();
+
+        this.out = Math.round(Math.abs(206.835 - 62.3*syllablesPerWord - wordsPerSentence));
+
+        return this;
+    }
+
+    grade()
+    {
+        if(this.out > 0 && this.out < 40){
+            this.out = "Muy difícil";
+            //this.infz.grade = "Universitario, Científico";
+        } else if (this.out > 40 && this.out < 55){
+            this.out = "Algo difícil";
+            //this.infz.grade = "Bachillerato, Divulgación científica, Prensa especializada";
+        } else if (this.out > 55 && this.out < 65){
+            this.out = "Normal";
+            //this.infz.grade = "E.S.O., Prensa general, Prensa deportiva";
+        } else if (this.out > 65 && this.out < 80){
+            this.out = "Bastante fácil";
+            //this.infz.grade = "Educación primaria, Prensa del corazón, Novelas de éxito";
+        } else if (this.out > 80){
+            this.out = "Muy fácil";
+            //this.infz.grade = "Educación primaria, Tebeos, Cómic";
+        }
+
+        return this;
+    }
+
 }
 
 //---------------------------------------
 
-var doc = lorca('Yo le canto a él. Él se rie.');
+var doc = lorca('En verano hace calor. En invierno hace frío');
 
-console.log(doc.sentences().pronouns().percentage().get());
+console.log(doc.ifsz().grade().get());
