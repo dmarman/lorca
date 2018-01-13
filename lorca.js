@@ -650,6 +650,21 @@ class Lorca
         return this;
     }
 
+    isPassive()
+    {
+        var passiveRegex = /\b(es|son|está|están|eran|era|estaba|estaban|fue|fueron|estuvo|estuvieron|ha sido|han sido|ha estado|han estado|había sido|habían sido|había estado|habían estado|será|serán|estará|estarán|habrá sido|habrán sido|habrá estado|habrán estado|sería|serían|estaría|estarían|habría sido|habrían sido|habría estado|habrían estado) ([a-z]+ |)[a-z]+(ado|ados|ido|idos)\b/;
+
+        if(this.out instanceof Array) {
+            for(var i = 0; i < this.out.length; i++){
+                this.out[i] = passiveRegex.test(this.out[i]) || false;
+            }
+        } else {
+            this.out = passiveRegex.test(this.out) || false;
+        }
+
+        return this;
+    }
+
     ifsz()
     {
         var syllablesPerWord = this.syllablesPerWord().get();
@@ -686,8 +701,6 @@ class Lorca
     {
         var regex = new RegExp(word, 'gi');
 
-        //return this.out.match(regex);
-
         if(this.out instanceof Array) {
             for(var i = 0; i < this.out.length; i++){
                 this.out[i] = this.out[i].match(regex) || [];
@@ -713,6 +726,6 @@ class Lorca
 
 //---------------------------------------
 
-var doc = lorca('En verano hace calor. En invierno hace frío');
+var doc = lorca('El niño ha sido castigado. La madre lo ha castigado.');
 
-console.log(doc.sentences().find("verano"));
+console.log(doc.sentences().isPassive().get());

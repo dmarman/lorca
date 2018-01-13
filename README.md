@@ -36,52 +36,6 @@ doc.onceWords().get();
 // [ 'verano', 'calor', 'invierno', 'frío' ]
 ```
 
-Extract prepositions from text, sentences or words.
-
-```javascript
-doc.prepositions().get();
-// [ 'en', 'en' ]
-
-doc.sentences().prepositions().get();
-// [ [ 'en' ], [ 'en' ] ]
-
-doc.words().prepositions().get();
-// [ [ 'en' ], [], [], [], [ 'en' ], [], [], [] ]
-```
-
-Extract pronouns from text, sentences or words.
-
-```javascript
-var doc = lorca('Yo le canto a él. Él se rie.');
-
-doc.pronouns().get();
-// [ 'yo', 'él', 'él' ]
-
-doc.sentences().pronouns().get();
-// [ [ 'yo', 'él' ], [ 'él' ] ]
-
-doc.words().pronouns().get()
-// [ [ 'yo' ], [], [], [], [ 'él' ], [ 'él' ], [], [] ]
-
-doc.pronouns().percentage().get();
-// 0.375
-
-doc.sentences().pronouns().percentage().get();
-// [ 0.4, 0.3333333333333333 ]
-```
-
-Extract adverbs from text, sentences or words.
-
-```javascript
-var doc = lorca('En verano hace realmente calor. En invierno hace frío');
-
-doc.adverbs().get();
-[ 'realmente' ]
-
-doc.sentences().adverbs().get();
-// [ [ 'realmente' ], [] ]
-```
-
 Group the output by sentence, word or both.
 
 ```javascript
@@ -116,6 +70,72 @@ doc.words().syllables().get();
   [ 'ha', 'ce' ],
   [ 'frí', 'o' ] ]
 */
+```
+
+### Prepositions
+
+Extract prepositions from text, sentences or words.
+
+```javascript
+doc.prepositions().get();
+// [ 'en', 'en' ]
+
+doc.sentences().prepositions().get();
+// [ [ 'en' ], [ 'en' ] ]
+
+doc.words().prepositions().get();
+// [ [ 'en' ], [], [], [], [ 'en' ], [], [], [] ]
+```
+
+### Pronouns
+
+Extract pronouns from text, sentences or words.
+
+```javascript
+var doc = lorca('Yo le canto a él. Él se rie.');
+
+doc.pronouns().get();
+// [ 'yo', 'él', 'él' ]
+
+doc.sentences().pronouns().get();
+// [ [ 'yo', 'él' ], [ 'él' ] ]
+
+doc.words().pronouns().get()
+// [ [ 'yo' ], [], [], [], [ 'él' ], [ 'él' ], [], [] ]
+
+doc.pronouns().percentage().get();
+// 0.375
+
+doc.sentences().pronouns().percentage().get();
+// [ 0.4, 0.3333333333333333 ]
+```
+
+### Adverbs
+
+Extract adverbs from text, sentences or words.
+
+```javascript
+var doc = lorca('En verano hace realmente calor. En invierno hace frío');
+
+doc.adverbs().get();
+[ 'realmente' ]
+
+doc.sentences().adverbs().get();
+// [ [ 'realmente' ], [] ]
+```
+
+## Pasive Voice
+
+Test whether a sentence is passive.
+
+```javascript
+var doc = lorca('El niño ha sido castigado.');
+doc.isPassive().get();
+// true
+
+var doc = lorca('El niño ha sido castigado. La madre lo ha castigado.');
+doc.sentences().isPassive().get();
+// [ true, false ]
 ```
 
 ## Concordance
@@ -186,6 +206,8 @@ doc.ifsz().grade().get();
 ```
 
 ## Search
+
+Search any word in the text. You can use Regex too.
 
 ```javascript
 var doc = lorca('En verano hace calor. En invierno hace frío');
