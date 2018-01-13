@@ -682,10 +682,37 @@ class Lorca
         return this;
     }
 
+    find(word)
+    {
+        var regex = new RegExp(word, 'gi');
+
+        //return this.out.match(regex);
+
+        if(this.out instanceof Array) {
+            for(var i = 0; i < this.out.length; i++){
+                this.out[i] = this.out[i].match(regex) || [];
+            }
+        } else {
+            this.out = this.out.match(regex) || [];
+        }
+
+        for(var n = 0; n < this.out.length; n++){
+            if(this.out[n] instanceof Array){
+                for(var k = 0; k < this.out[n].length; k++){
+                    this.out[n][k] = this.out[n][k].toLowerCase().replace(/ /g, '');
+                }
+            } else {
+                this.out[n] = this.out[n].toLowerCase().replace(/ /g, '');
+            }
+        }
+
+        return this.out;
+    }
+
 }
 
 //---------------------------------------
 
-var doc = lorca('En verano hace realmente calor. En invierno hace frío');
+var doc = lorca('En verano hace calor. En invierno hace frío');
 
-console.log(doc.adverbs().get());
+console.log(doc.sentences().find("verano"));

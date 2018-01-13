@@ -184,3 +184,16 @@ doc.ifsz().get();
 doc.ifsz().grade().get();
 // Bastante fácil
 ```
+
+## Search
+
+```javascript
+var doc = lorca('En verano hace calor. En invierno hace frío');
+
+doc.find("verano");
+// [ 'verano' ]
+
+doc.sentences().find("verano");
+// [ [ 'verano' ], [] ]
+
+```
