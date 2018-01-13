@@ -49,6 +49,27 @@ doc.words().prepositions().get();
 // [ [ 'en' ], [], [], [], [ 'en' ], [], [], [] ]
 ```
 
+Extract pronouns from text, sentences or words.
+
+```javascript
+var doc = lorca('Yo le canto a él. Él se rie.');
+
+doc.pronouns().get();
+// [ 'yo', 'él', 'él' ]
+
+doc.sentences().pronouns().get();
+// [ [ 'yo', 'él' ], [ 'él' ] ]
+
+doc.words().pronouns().get()
+// [ [ 'yo' ], [], [], [], [ 'él' ], [ 'él' ], [], [] ]
+
+doc.pronouns().percentage().get();
+// 0.375
+
+doc.sentences().pronouns().percentage().get();
+// [ 0.4, 0.3333333333333333 ]
+```
+
 Group the output by sentence, word or both.
 
 ```javascript
