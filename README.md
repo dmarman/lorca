@@ -118,7 +118,7 @@ Extract adverbs from text, sentences or words.
 var doc = lorca('En verano hace realmente calor. En invierno hace frío');
 
 doc.adverbs().get();
-[ 'realmente' ]
+// [ 'realmente' ]
 
 doc.sentences().adverbs().get();
 // [ [ 'realmente' ], [] ]
