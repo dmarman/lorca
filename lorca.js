@@ -729,30 +729,48 @@ class Lorca
         return 60*this.words().get().length/speed;
     }
 
-    sentiment()
+    calculateSentiment(array)
     {
         const fs = require('fs');
         var afinn = JSON.parse(fs.readFileSync('./dictionaries/afinnShortSortedSpanish.json', 'utf8'));
 
-        var words = this.words().get();
+        var words = array;
         var score = 0;
 
         words.forEach((token) => {
             if(afinn[token] != undefined){
-                console.log(token, afinn[token]);
                 score += afinn[token];
             }
         });
-        
+  
         score = score/words.length; 
 
         return score;
+    }
+
+    sentiment()
+    {        
+        if(this.out instanceof Array){
+            for(var i = 0; i < this.out.length; i++){
+                if(this.out[i] instanceof Array){
+                    for(var j = 0; j < this.out[i].length; j++){
+                        this.out[i][j] = this.calculateSentiment(this.trimWords(this.out[i][j]));
+                    }
+                } else {
+                    this.out[i] = this.calculateSentiment(this.trimWords(this.out[i]));                    
+                }
+            }
+        } else {
+            this.out = this.calculateSentiment(this.words().get());
+        }
+        
+        return this.out;
     }
 
 }
 
 //---------------------------------------
 
-var doc = lorca('Me gusta la navidad.');
+var doc = lorca('El plátano está muy malo. Me gusta la navidad');
 
-console.log(doc.sentiment());
+console.log(doc.sentences().words().sentiment());

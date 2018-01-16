@@ -221,6 +221,19 @@ var doc = lorca('Me gusta la navidad.');
 
 doc.sentiment();
 // 0.5
+
+var doc = lorca('El plátano está malo. Me gusta la navidad');
+
+doc.sentences().sentiment();
+// [ -0.75, 0.5 ]
+
+doc.words().sentiment();
+// [ 0, 0, 0, -3, 0, 2, 0, 0 ]
+
+doc.sentences().words().sentiment()
+// [ [ 0, 0, 0, -3 ], [ 0, 2, 0, 0 ] ]
+
+
 ```
 
 ## Reading Time
