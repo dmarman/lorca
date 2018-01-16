@@ -729,10 +729,30 @@ class Lorca
         return 60*this.words().get().length/speed;
     }
 
+    sentiment()
+    {
+        const fs = require('fs');
+        var afinn = JSON.parse(fs.readFileSync('./dictionaries/afinnShortSortedSpanish.json', 'utf8'));
+
+        var words = this.words().get();
+        var score = 0;
+
+        words.forEach((token) => {
+            if(afinn[token] != undefined){
+                console.log(token, afinn[token]);
+                score += afinn[token];
+            }
+        });
+        
+        score = score/words.length; 
+
+        return score;
+    }
+
 }
 
 //---------------------------------------
 
-var doc = lorca('El niño ha sido castigado. La madre lo ha castigado.');
+var doc = lorca('Me gusta la navidad.');
 
-console.log(doc.readingTime());
+console.log(doc.sentiment());

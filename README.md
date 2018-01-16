@@ -205,6 +205,24 @@ doc.ifsz().grade().get();
 // Bastante fácil
 ```
 
+## Sentiment
+
+### AFINN
+
+Disclaimer: It uses a semi-automated translation of the original AFINN list. The list only contains words that are inside the 10.000 most used words. It has a total of 885 words. The ```sentiment()``` method returns a relative value. Positive values mean a positive sentiment and negative values mean negative sentiment.
+
+```javascript
+var doc = lorca('El plátano está malo.');
+
+doc.sentiment();
+// -0.75
+
+var doc = lorca('Me gusta la navidad.');
+
+doc.sentiment();
+// 0.5
+```
+
 ## Reading Time
 
 Get the reading time of a text in seconds. You can pass a reading speed as
