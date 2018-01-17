@@ -1,6 +1,6 @@
 {
   "name": "lorca-nlp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "nlp for Spanish",
   "main": "lorca.js",
   "scripts": {
