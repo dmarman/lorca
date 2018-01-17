@@ -4,10 +4,26 @@ Lorca is a NLP library for Spanish written in javascript.
 ## Installation
 ### Client-side
 
-Download lorca.js from this repository and inclue it in your html. Start using it right away.
+Not suported yet, but soon.
 
 ### Server-side
-Not suported yet, but soon.
+
+Run:
+
+```bash
+$ npm install lorca-nlp
+```
+
+Start using the library like:
+```javascript
+const lorca = require('lorca-nlp');
+
+var doc = lorca('esto es un test');
+
+doc.words().get();
+// [ 'esto', 'es', 'un', 'test' ]
+```
+
 
 ## Text tokenization
 
