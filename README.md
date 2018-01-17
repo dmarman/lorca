@@ -1,3 +1,5 @@
+[![npm](https://img.shields.io/npm/v/lorca-nlp.svg)](https://www.npmjs.com/package/lorca-nlp) [![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)]()
+
 # Lorca.js
 Lorca is a NLP library for Spanish written in javascript.
 
