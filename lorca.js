@@ -1,6 +1,6 @@
 'use strict';
 
-function lorca(input)
+var lorca = function(input)
 {
     var wrapper = new Lorca();
 
@@ -14,6 +14,7 @@ class Lorca
         this.input = '';
         this.text = '';
         this.out = '';
+        this.list = {};
     }
 
     in()
@@ -779,12 +780,53 @@ class Lorca
         
         return this.out;
     }
+    
+    // Beta
+    trainSentiment(sentence, flag)
+    {
+        var tokens = this.trimWords(sentence);
+
+        for(var i = 0; i < tokens.length; i++){
+            if(this.list.hasOwnProperty(tokens[i])){
+                if(flag === true){
+                    this.list[tokens[i]].score += 1;
+                } else {
+                    this.list[tokens[i]].score -= 1;
+                }
+                this.list[tokens[i]].frequency += 1;                      
+            } else {
+                if(flag === true){
+                    this.list[tokens[i]] = {score: 1, frequency: 1};
+                } else {
+                    this.list[tokens[i]] = {score: -1, frequency: 1};                    
+                }
+            }
+        }
+
+        this.output = {};
+
+        for(var token in this.list){
+            this.output[token] = this.list[token].score/this.list[token].frequency; 
+        }
+   
+        return this.output;
+    }
+
+    // Beta
+    guess(string)
+    {
+        var words = this.trimWords(string);
+        var score = 0;
+        
+        words.forEach((item) => {
+            if(this.output[item] != undefined){
+                score += this.output[item];
+            }
+        });
+
+        return score;
+    }
 
 }
 
-//---------------------------------------
-
-var doc = lorca('El plátano está muy bueno. Me gusta la navidad. Esto no ha sido magnífico.');
-
-console.log(doc.sentiment());
-//console.log(doc.sentiment());
+module.exports = lorca;
