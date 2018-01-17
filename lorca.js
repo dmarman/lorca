@@ -736,14 +736,19 @@ class Lorca
 
         var words = array;
         var score = 0;
+        var negator = 1;
 
-        words.forEach((token) => {
-            if(afinn[token] != undefined){
-                score += afinn[token];
-            }
-        });
-  
-        score = score/words.length; 
+            words.forEach((token) => {
+                if(afinn[token] != undefined){
+                    score += negator*afinn[token];   
+                    // TODO jamás, ni. 
+                    if(token == 'no' || token == 'nunca'){
+                        negator = -1;
+                    }
+                }
+            });
+        
+        score = score/words.length;                     
 
         return score;
     }
@@ -757,11 +762,19 @@ class Lorca
                         this.out[i][j] = this.calculateSentiment(this.trimWords(this.out[i][j]));
                     }
                 } else {
+                    // Sentence calculation
                     this.out[i] = this.calculateSentiment(this.trimWords(this.out[i]));                    
                 }
             }
         } else {
-            this.out = this.calculateSentiment(this.words().get());
+            var sentences = this.sentences().get();
+            var sentenceSentiments = this.sentiment();
+            
+            var add = (a, b) => {
+                return a + b
+            }
+
+            this.out = sentenceSentiments.reduce(add)/sentenceSentiments.length;
         }
         
         return this.out;
@@ -771,6 +784,7 @@ class Lorca
 
 //---------------------------------------
 
-var doc = lorca('El plátano está muy malo. Me gusta la navidad');
+var doc = lorca('El plátano está muy bueno. Me gusta la navidad. Esto no ha sido magnífico.');
 
-console.log(doc.sentences().words().sentiment());
+console.log(doc.sentiment());
+//console.log(doc.sentiment());

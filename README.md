@@ -209,7 +209,7 @@ doc.ifsz().grade().get();
 
 ### AFINN
 
-Disclaimer: It uses a semi-automated translation of the original AFINN list. The list only contains words that are inside the 10.000 most used words. It has a total of 885 words. The ```sentiment()``` method returns a relative value. Positive values mean a positive sentiment and negative values mean negative sentiment.
+Disclaimer: It uses a semi-automated translation of the original AFINN list. The list only contains words that are inside the 10.000 most used words. It has a total of 885 words. The ```sentiment()``` method calculates the relative value of each sentece and then it returns the relative values of those sentences. Positive values mean a positive sentiment and negative values mean negative sentiment.
 
 ```javascript
 var doc = lorca('El plátano está malo.');
@@ -222,17 +222,19 @@ var doc = lorca('Me gusta la navidad.');
 doc.sentiment();
 // 0.5
 
-var doc = lorca('El plátano está malo. Me gusta la navidad');
+var doc = lorca('El plátano está muy bueno. Me gusta la navidad. Esto no ha sido magnífico.');
 
 doc.sentences().sentiment();
-// [ -0.75, 0.5 ]
+// [ 0.6, 0.5, -1.2 ]
 
 doc.words().sentiment();
-// [ 0, 0, 0, -3, 0, 2, 0, 0 ]
+// [ 0, 0, 0, 0, 3, 0, 2, 0, 0, 0, -1, 0, 0, 5 ]
 
 doc.sentences().words().sentiment()
-// [ [ 0, 0, 0, -3 ], [ 0, 2, 0, 0 ] ]
+// [ [ 0, 0, 0, 0, 3 ], [ 0, 2, 0, 0 ], [ 0, -1, 0, 0, 5 ] ]
 
+doc.sentiment();
+// -0.03333333333333329
 
 ```
 
