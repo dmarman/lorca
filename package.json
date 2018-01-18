@@ -15,12 +15,12 @@
     "sentiment analysis",
     "spanish"
   ],
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "scripts": { 
+    "test": "jasmine" 
   },
   "author": "Domingo Martín Mancera <dmm.martin@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "request": "^2.83.0"
+    "jasmine": "^2.9.0"
   }
 }

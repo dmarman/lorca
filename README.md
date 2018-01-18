@@ -44,8 +44,7 @@ doc.words().get();
 // [ 'en', 'verano', 'hace', 'calor', 'en', 'invierno', 'hace', 'frío' ]
 
 doc.syllables().get();
-// [ 'En ', 've', 'ra', 'no', ' ha', 'ce ', 'ca', 'lor.', 
-//   'En', ' in', 'vier', 'no', ' ha', 'ce ','frí', 'o.' ]
+// [ 'en', 've', 'ra', 'no', 'ha', 'ce', 'ca', 'lor.', 'en', 'in', 'vier', 'no', 'ha', 'ce','frí', 'o.' ]
 
 doc.uniqueWords().get();
 // [ 'en', 'verano', 'hace', 'calor', 'invierno', 'frío' ]
@@ -282,4 +281,10 @@ doc.find("verano");
 doc.sentences().find("verano");
 // [ [ 'verano' ], [] ]
 
+```
+
+## Testing
+
+```bash
+$ npm test
 ```

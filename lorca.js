@@ -63,9 +63,16 @@ class Lorca
         return this;
     }
 
+    load()
+    {
+        this.out = this.text;
+
+        return this;
+    }
+
     sentences()
     {
-        this.out = this.trimSentences(this.out);
+        this.out = this.trimSentences(this.text);
 
         return this;
     }
@@ -82,12 +89,12 @@ class Lorca
 
     words()
     {
-        if(this.out instanceof Array){
+        if(this.out instanceof Array && !(this.out[0] instanceof Array)){
             for(var i = 0; i < this.out.length; i++){
                 this.out[i] = this.trimWords(this.out[i]);
             }
         } else {
-            this.out = this.trimWords(this.out);
+            this.out = this.trimWords(this.text);
         }
        
        return this;
