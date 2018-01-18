@@ -1,6 +1,6 @@
 {
   "name": "lorca-nlp",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "NLP for Spanish",
   "main": "lorca.js",
   "homepage": "https://github.com/dmarman/lorca",
@@ -15,8 +15,8 @@
     "sentiment analysis",
     "spanish"
   ],
-  "scripts": { 
-    "test": "jasmine" 
+  "scripts": {
+    "test": "jasmine"
   },
   "author": "Domingo Martín Mancera <dmm.martin@gmail.com>",
   "license": "MIT",
