@@ -1,12 +1,24 @@
 {
   "name": "lorca-nlp",
   "version": "1.0.2",
-  "description": "nlp for Spanish",
+  "description": "NLP for Spanish",
   "main": "lorca.js",
+  "homepage": "https://github.com/dmarman/lorca",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dmarman/lorca.git"
+  },
+  "keywords": [
+    "natural language processing",
+    "analysis",
+    "nlp",
+    "sentiment analysis",
+    "spanish"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Domingo Martín Mancera",
+  "author": "Domingo Martín Mancera <dmm.martin@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "request": "^2.83.0"
