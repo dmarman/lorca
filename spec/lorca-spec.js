@@ -55,3 +55,51 @@ describe("get once words", function () {
     expect(output).toEqual([ 'verano', 'calor', 'invierno', 'frío' ]);
   });
 }); 
+
+describe("get words of sentences", function () {
+  it("should return array of sentences with array of words", function () {
+    var doc = lorca('<p>En verano hace calor. En invierno hace frío</p>');
+    var output = doc.sentences().words().get();
+    expect(output).toEqual([ [ 'en', 'verano', 'hace', 'calor' ], [ 'en', 'invierno', 'hace', 'frío'] ]);
+  });
+}); 
+
+describe("get syllables of sentences", function () {
+  it("should return array of sentences with array of syllables", function () {
+    var doc = lorca('<p>En verano hace calor. En invierno hace frío</p>');
+    var output = doc.sentences().syllables().get();
+    expect(output).toEqual([ [ 'en', 've', 'ra', 'no', 'ha', 'ce', 'ca', 'lor.' ], [ 'en', 'in', 'vier', 'no', 'ha', 'ce', 'frí', 'o.' ] ]);
+  });
+}); 
+
+describe("get syllables of words of sentences", function () {
+  it("should return array of sentences with array of words with syllables", function () {
+    var doc = lorca('<p>En verano hace calor. En invierno hace frío</p>');
+    var output = doc.sentences().words().syllables().get();
+    expect(output).toEqual([ [ [ 'en' ], [ 've', 'ra', 'no' ], [ 'ha', 'ce' ], [ 'ca', 'lor' ] ], [ [ 'en' ], [ 'in', 'vier', 'no' ], [ 'ha', 'ce' ], [ 'frí', 'o' ] ] ]);
+  });
+}); 
+
+describe("get syllables of words", function () {
+  it("should return array of sentences with array of words", function () {
+    var doc = lorca('<p>En verano hace calor. En invierno hace frío</p>');
+    var output = doc.words().syllables().get();
+    expect(output).toEqual([ [ 'en' ], [ 've', 'ra', 'no' ], [ 'ha', 'ce' ], [ 'ca', 'lor' ], [ 'en' ], [ 'in', 'vier', 'no' ], [ 'ha', 'ce' ], [ 'frí', 'o' ] ]);
+  });
+}); 
+
+describe("get unique words percentage", function () {
+  it("should return unique words percentage", function () {
+    var doc = lorca('<p>En verano hace calor. En invierno hace frío</p>');
+    var output = doc.uniqueWords().percentage().get();
+    expect(output).toEqual(0.75);
+  });
+}); 
+
+describe("get once words percentage", function () {
+  it("should return once word percentage", function () {
+    var doc = lorca('<p>En verano hace calor. En invierno hace frío</p>');
+    var output = doc.onceWords().percentage().get();
+    expect(output).toEqual(0.5);
+  });
+}); 

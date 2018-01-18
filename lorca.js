@@ -504,7 +504,7 @@ class Lorca
     concordance(mode)
     {
         var tokens = this.words().get();
-        var concordance = [];
+        var concordance = {};
 
         for(var i = 0; i < tokens.length; i++){
             if(concordance.hasOwnProperty(tokens[i])){
@@ -527,7 +527,7 @@ class Lorca
 
     sort(listMaxLength)
     {
-        var sorted = [];
+        var sorted = {};
         var keys = Object.keys(this.out);
         var arr = this.out;
        
@@ -607,7 +607,7 @@ class Lorca
     {
         //TODO palabra con acento como míote ará match con mío, el acento no va bien
         //TODO add other pronouns
-        var tonicRegex = /( |\b)(yo|tú|vos|usted|él|ella|ello|nosotros|nosotras|ustedes|ellos|ellas|mí|conmigo|ti|contigo|consigo)( |\b)/gi;
+        var tonicRegex = /(yo|tú|vos|usted|él|ella|ello|nosotros|nosotras|ustedes|ellos|ellas|mí|conmigo|ti|contigo|consigo)/gi;
         var posesiveRegex = /( |\b)(mío|mía|míos|mías|tuyo|tuya|tuyos|tuyas|suyo|suya|suyos|suyas|nuestro|nuestra|nuestros|nuestras|vuestro|vuestra|vuestros|vuestras|suyo|suya|suyos|suyas)( |\b)/gi;
         var demostrativeRegex = /( |\b)(esta|este|esto|estos|estas|ese|esa|eso|esos|esas|aquel|aquella|aquello|aquellos|aquellas)( |\b)/gi;
         var indefiniteRegex = /( |\b)(uno|una|unos|unas|alguno|alguna|algo|algunos|algunas|ninguno|ninguna|nada|ningunos|ningunas|poco|poca|pocos|pocas|escaso|escasa|escasos|escasas|mucho|mucha|muchos|muchas|demasiado|demasiada|demasiados|demasiadas|todo|toda|todos|todas|varios|varias|otro|otra|otros|otras|mismo|misma|mismos|mismas|tan|tanto|tanta|tantos|tantas|alguien|nadie|cualquiera|quienquiera|demás|cualesquiera|quienesquiera)( |\b)/gi;
