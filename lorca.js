@@ -1,5 +1,7 @@
 'use strict';
 
+const stemmer = require('./src/stemmer.js');
+
 var lorca = function(input)
 {
     var wrapper = new Lorca();
@@ -832,6 +834,11 @@ class Lorca
         });
 
         return score;
+    }
+
+    stemmer(word)
+    {
+        return stemmer.stemm(word);
     }
 
 }
