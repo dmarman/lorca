@@ -27,6 +27,21 @@ doc.words().get();
 // [ 'esto', 'es', 'un', 'test' ]
 ```
 
+## API Concept
+
+This library lets concatenate different methods to the document you are working on. Each time a method
+is executed, its output is stored in the doc object. If you need to execute methods more than once
+ you have to make use of the ```load()``` method. This will reload the original document in the doc object.
+
+ ```javascript
+ var doc = lorca('En verano hace calor. En invierno hace frío');
+
+ // This stores the concordance output in the doc object.
+ var concordance = doc.concordance().sort().get();
+
+ // If you now need the words of your document, you must reload it with load().
+ var originalWords = doc.load().words().get();
+ ```
 
 ## Text tokenization
 
@@ -262,8 +277,18 @@ Get the stem of any word in Spanish. This stemmer is based in [Porter](http://sn
 still need improvement.
 
 ```javascript
-doc.stemmer('recomendaciones');
+doc.stem('recomendaciones');
 // recomend
+
+var doc = lorca('Los niños juegan con las pelotas');
+doc.words().stem();
+// [ 'los', 'niñ', 'jueg', 'con', 'las', 'pelot' ]
+
+var doc = lorca('Los niños juegan con las pelotas. Los profesores hablan del tiempo.');
+doc.sentences().words().stem();
+// [ [ 'los', 'niñ', 'jueg', 'con', 'las', 'pelot' ],
+//   [ 'los', 'profesor', 'habl', 'del', 'tiemp' ] ]
+
 ```
 
 ## Reading Time

@@ -15,4 +15,17 @@ describe('porter stemmer', function() {
             }
         );
     });
+
+    it('should perform stem on array', function() {
+        var doc = lorca('Los niños juegan con las pelotas');
+        var output = doc.words().stem();
+        expect(output).toEqual([ 'los', 'niñ', 'jueg', 'con', 'las', 'pelot' ]);
+    });
+
+    it('should perform stem on array of array', function() {
+        var doc = lorca('Los niños juegan con las pelotas. Los profesores hablan del tiempo.');
+        var output = doc.sentences().words().stem();
+        expect(output).toEqual([ [ 'los', 'niñ', 'jueg', 'con', 'las', 'pelot' ],
+                                    [ 'los', 'profesor', 'habl', 'del', 'tiemp' ] ]);
+    });
 });

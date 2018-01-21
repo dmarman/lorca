@@ -782,7 +782,7 @@ class Lorca
             
             var add = (a, b) => {
                 return a + b
-            }
+            };
 
             this.out = sentenceSentiments.reduce(add)/sentenceSentiments.length;
         }
@@ -840,6 +840,19 @@ class Lorca
     {
         if(word){
             return stemmer.stem(word);
+        } else {
+            if(this.out instanceof Array){
+                for(var i = 0; i < this.out.length; i++){
+                    if(this.out[i] instanceof Array){
+                        for(var j = 0; j < this.out[i].length; j++){
+                            this.out[i][j] = stemmer.stem(this.out[i][j]);
+                        }
+                    } else {
+                        this.out[i] = stemmer.stem(this.out[i]);
+                    }
+                }
+                return this.out;
+            }
         }
     }
 
