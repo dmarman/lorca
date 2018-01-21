@@ -1,7 +1,7 @@
 <?php
 /*
 
-	Stemm_es a stemming class for spanish / Un lexemador para español
+	Stemm_es a stemming class for spanish / Un lexemador para espaï¿½ol
     Copyright (C) 2007  Paolo Ragone
 
     This library is free software; you can redistribute it and/or
@@ -28,16 +28,22 @@ require_once 'stemm_es.php';
 $lines = file('stemm_test_corpus.txt');
 
 $now = time();
+
 foreach ($lines as $line) {
-	$part = split(' ', $linea);
+	$part = preg_split("/ /", $line);
+    $part[1] = rtrim($part[1]);
 	$st = stemm_es::stemm($part[0]);
 	if ($st != $part[1]) {
-		print "Word: " . $part[0] . ", stem: " . $st . ", ";
-		print "expected: " . $part[1];
-		print " -- BAD<HR>";
+        var_dump($part[0]);
+        var_dump($part[1]);
+        var_dump($st);
+
+        echo '<br>';
+//		print "Word: " . $part[0] . ", stem: " . $st . ", ";
+		//print "expected: " . $part[1];
+//		print " -- BAD<HR>";
 	}
 }
 
 print "<BR>Stemmed: " . count($lines) . " words in " . (time() - $now) . " secs";
 
-?>

@@ -98,37 +98,35 @@ abortados abort
 abortiva abort
 aborto abort
 abortos abort
-abra abra
+abra abr
 abraham abraham
 abrasivo abras
 abrazarlo abraz
 abrazarse abraz
 abrazo abraz
-abre abre
+abre abr
 abrego abreg
-abren abren
+abren abr
 abreu abreu
 abreviar abrevi
-abrían abri
+abrían abr
 abridor abridor
-abriendo abriend
-abrieron abrieron
+abriendo abr
+abrieron abr
 abrigan abrig
 abrigo abrig
 abrigos abrig
 abril abril
 abriles abril
-abrio abri
-abrió abri
-abrir abrir
-abrira abrir
-abrirá abrir
-abrirán abriran
-abriría abrir
-abrirla abrirl
-abrirlos abrirl
-abrirnos abrirn
-abrirse abrirs
+abrió abr
+abrir abr
+abrirá abr
+abrirán abr
+abriría abr
+abrirla abr
+abrirlos abr
+abrirnos abr
+abrirse abr
 abrogación abrog
 abrogados abrog
 abrogar abrog
@@ -2268,7 +2266,6 @@ arquero arquer
 arquidiócesis arquidiocesis
 arquitecto arquitect
 arquitectónicamente arquitecton
-
 arquitectónicas arquitecton
 arquitectónico arquitecton
 arquitectos arquitect
@@ -3875,6 +3872,7 @@ buenos buen
 buerón bueron
 buey buey
 bueyes buey
+huyeron hu
 búfalo bufal
 bufferin bufferin
 bugno bugn
@@ -4026,7 +4024,7 @@ caen caen
 caer caer
 caerle caerl
 café caf
-cafecito cafecit
+cafecito caf
 cafés cafes
 cafetal cafetal
 cafetería cafet
@@ -6577,7 +6575,6 @@ consultora consultor
 consultoría consultor
 consultorio consultori
 consultoriobursátil consultoriobursatil
-
 consumados consum
 consumaran consum
 consumida consum
@@ -10952,7 +10949,6 @@ espectro espectr
 espectrógrafo espectrograf
 espectrómetro espectrometr
 espectroredioeléctrico espectroredioelectr
-
 especulador especul
 especuladores especul
 especular especul
@@ -12275,9 +12271,9 @@ flexibles flexibl
 flojos floj
 flor flor
 flora flor
-floración floracion
-florales floral
-florecita florecit
+floración flor
+florales flor
+florecita flor
 florencia florenci
 flores flor
 florida flor
@@ -12432,11 +12428,8 @@ foster fost
 foto fot
 fotocopiadoras fotocopi
 fotocredencialización fotocredencializ
-
 fotocredencializadas fotocredencializ
-
 fotocredencializados fotocredencializ
-
 fotocredencializar fotocredencializ
 fotografía fotograf
 fotografiar fotografi
@@ -13196,7 +13189,7 @@ granata granat
 granate granat
 grand grand
 grande grand
-grandecito grandecit
+grandecito grand
 grandes grand
 grandeza grandez
 grandguillhomme grandguillhomm
@@ -14412,6 +14405,7 @@ incluyan inclu
 incluye inclu
 incluyen inclu
 incluyendo inclu
+incluyendome inclu
 incluyeron inclu
 incluyó inclu
 incoherencias incoherent
@@ -14441,7 +14435,6 @@ inconsistencia inconsistent
 inconsistente inconsistent
 inconstitucionales inconstitucional
 inconstitucionalidad inconstitucional
-
 incontenible inconten
 incontrolable incontrol
 incontrolables incontrol
@@ -15167,7 +15160,6 @@ interna intern
 internacional internacional
 internacionales internacional
 internacionalización internacionaliz
-
 internacionalmente internacional
 internado intern
 internamente intern
@@ -17577,9 +17569,7 @@ mexicayótl mexicayotl
 mexico mexic
 méxico mexic
 méxicoestadounidense mexicoestadounidens
-
 méxiconorteamericanos mexiconorteamerican
-
 méxicoquerétaro mexicoqueretar
 mexinox mexinox
 mexiquense mexiquens
@@ -18186,7 +18176,6 @@ multilaterales multilateral
 multimedia multimedi
 multimedios multimedi
 multimillonariamente multimillonari
-
 multimillonario multimillonari
 multimillonarios multimillonari
 multimodal multimodal
@@ -18564,7 +18553,7 @@ niegan nieg
 niegue nieg
 nieguen nieg
 nieta niet
-nietecita nietecit
+nietecita niet
 nieto niet
 nietos niet
 nieve niev
@@ -19538,7 +19527,7 @@ padecimiento padec
 padecimientos padec
 padilla padill
 padre padr
-padrecito padrecit
+padrecito padr
 padres padr
 padrino padrin
 padró padr
@@ -20497,7 +20486,7 @@ pie pie
 piedad pied
 piedra piedr
 piedras piedr
-piedrecita piedrecit
+piedrecita piedr
 piedritas piedrit
 piel piel
 pieles piel
@@ -21633,7 +21622,6 @@ profesional profesional
 profesionales profesional
 profesionalismo profesional
 profesionalización profesionaliz
-
 profesionalmente profesional
 profesionista profesion
 profesionistas profesion
@@ -26889,7 +26877,6 @@ trasmitirlo trasmit
 trasnacional trasnacional
 trasnacionales trasnacional
 trasnacionalización trasnacionaliz
-
 trasplantados trasplant
 trasplante trasplant
 trasplantes trasplant

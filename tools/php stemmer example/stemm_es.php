@@ -157,7 +157,8 @@ class stemm_es {
 		
 		if ($word_after0 == $word_after1) {
 			// Do step 2a if no ending was removed by step 1. 
-			if (($suf = stemm_es::endsinArr($rv_txt, array('ya', 'ye', 'yan', 'yen', 'yeron', 'yendo', 'yo', 'yó', 'yas', 'yes', 'yais', 'yamos'))) != '' && (substr($word,-strlen($suf)-1,1) == 'u')) {
+			if (($suf = stemm_es::endsinArr($rv_txt, array('ya', 'ye', 'yan', 'yen', 'yeron', 'yendo', 'yo', 'yó', 'yas', 'yes', 'yais', 'yamos'))) != ''
+				&& (substr($word,-strlen($suf)-1,1) == 'u')) {
 				$word = substr($word,0, -strlen($suf));
 			}
 			

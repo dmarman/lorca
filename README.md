@@ -1,7 +1,8 @@
 [![npm](https://img.shields.io/npm/v/lorca-nlp.svg)](https://www.npmjs.com/package/lorca-nlp) [![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)]()
 
 # Lorca.js
-Lorca is a NLP library for Spanish written in javascript.
+Lorca is a NLP library for Spanish written in javascript. Tokenization,
+concordance, stemmer, statistics, sentiment analysis, readability and more!
 
 ## Installation
 ### Client-side
@@ -253,6 +254,16 @@ doc.sentences().words().sentiment()
 doc.sentiment();
 // -0.03333333333333329
 
+```
+
+## Stemmer (Beta)
+
+Get the stem of any word in Spanish. This stemmer is based in [Porter](http://snowball.tartarus.org/algorithms/spanish/stemmer.html) algorithm and
+still need improvement.
+
+```javascript
+doc.stemmer('recomendaciones');
+// recomend
 ```
 
 ## Reading Time
