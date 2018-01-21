@@ -836,9 +836,11 @@ class Lorca
         return score;
     }
 
-    stemmer(word)
+    stem(word)
     {
-        return stemmer.stemm(word);
+        if(word){
+            return stemmer.stem(word);
+        }
     }
 
 }

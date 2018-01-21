@@ -19,18 +19,18 @@ rl.on('line', function (line) {
 var fails = 0;
 
 rl.on('close', function(){
-    for(var i = 0; i < words.length; i++){
-        //console.log(words[i][0], words[i][1]);
-        if(doc.stemmer(words[i][0]) != words[i][1]){
-            console.log('[' + words[i][0] + ']: should: ', words[i][1], '    is: ' + doc.stemmer(words[i][0]));
-            fails++;
-        }
-    }
-    console.log(fails, i);
+    // for(var i = 0; i < words.length; i++){
+    //     //console.log(words[i][0], words[i][1]);
+    //     if(doc.stemmer(words[i][0]) != words[i][1]){
+    //         console.log('[' + words[i][0] + ']: should: ', words[i][1], '    is: ' + doc.stemmer(words[i][0]));
+    //         fails++;
+    //     }
+    // }
+    // console.log(fails, i);
 
 });
 
 
 
-var output = doc.stemmer('');
+var output = doc.stemmer('méxicoquerétaro');
 console.log(output);

@@ -69,7 +69,7 @@ class Stemmer
 
     removeAccent(word)
     {
-        var accentedVowels = ['á', 'é', 'í', 'ó', 'ú'];        
+        var accentedVowels = ['á', 'é', 'í', 'ó', 'ú'];
         var vowels = ['a', 'e', 'i', 'o', 'u'];
 
         for(var i in accentedVowels){
@@ -79,15 +79,15 @@ class Stemmer
         return word;
     }
 
-    stemm(word)
+    stem(word)
     {
         var length = word.length;
 
-        if(length < 2){
-            return word;
-        }
-
         word.toLowerCase();
+
+        if(length < 2){
+            return this.removeAccent(word);
+        }
 
         var r1, r2, rv;
         r1 = length;
@@ -124,7 +124,6 @@ class Stemmer
         var r2Text = word.slice(r2);
         var rvText = word.slice(rv);
         var originalWord = word;
-        // console.log(r1Text, r2Text, rvText, rv);
 
         // Step 0: Attached pronoun
         var pronounSuffix = ['me', 'se', 'sela', 'selo', 'selas', 'selos', 'la', 'le', 'lo', 'las', 'les', 'los', 'nos'];
@@ -155,8 +154,6 @@ class Stemmer
         }
 
         var wordAfter0 = word;
-
-       // console.log(r1Text, r2Text, rvText);
 
         if(( suf = this.endsInArr(r2Text, ['anza', 'anzas', 'ico', 'ica', 'icos', 'icas', 'ismo', 'ismos',
                                             'able', 'ables', 'ible', 'ibles', 'ista', 'istas', 'oso', 'osa',
