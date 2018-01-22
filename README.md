@@ -369,4 +369,4 @@ $ npm test
 
 ## Thanks to
 
-[Vic](https://github.com/vic/silabas.js) - for his spanish hyphenator in javascript. 
+[Vic](https://github.com/vic/silabas.js) - for his Spanish hyphenator in javascript. 

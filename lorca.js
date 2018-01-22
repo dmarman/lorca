@@ -490,7 +490,10 @@ class Lorca
 
     tfidf()
     {
-        var frequencies = this.words().concordance('relative').get();
+        if(!(this.out instanceof Array)){
+            var frequencies = this.words().concordance('relative').get();        
+        }
+        
         var idf = {};
         for (var token in frequencies){
             this.out[token] = -frequencies[token]/0.0001*Math.log(this.corpusFrequency(token)/0.001);
