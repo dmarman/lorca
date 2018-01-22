@@ -273,21 +273,25 @@ doc.sentiment();
 
 ## Stemmer (Beta)
 
-Get the stem of any word in Spanish. This stemmer is based in [Porter](http://snowball.tartarus.org/algorithms/spanish/stemmer.html) algorithm and
-still need improvement.
+Get the stem of any word in Spanish. The stemmer is based on the [Porter](http://snowball.tartarus.org/algorithms/spanish/stemmer.html) algorithm.
+You can also get the stemed concordance of your document.
 
 ```javascript
 doc.stem('recomendaciones');
 // recomend
 
 var doc = lorca('Los niños juegan con las pelotas');
-doc.words().stem();
+doc.words().stem().get();
 // [ 'los', 'niñ', 'jueg', 'con', 'las', 'pelot' ]
 
 var doc = lorca('Los niños juegan con las pelotas. Los profesores hablan del tiempo.');
-doc.sentences().words().stem();
+doc.sentences().words().stem().get();
 // [ [ 'los', 'niñ', 'jueg', 'con', 'las', 'pelot' ],
 //   [ 'los', 'profesor', 'habl', 'del', 'tiemp' ] ]
+
+var doc = lorca('Los niños juegan con las niñas.');
+doc.words().stem().concordance().sort().get();
+// { 'niñ': 2, los: 1, jueg: 1, con: 1, las: 1 }
 
 ```
 

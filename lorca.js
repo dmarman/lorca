@@ -851,7 +851,7 @@ class Lorca
                         this.out[i] = stemmer.stem(this.out[i]);
                     }
                 }
-                return this.out;
+                return this;
             }
         }
     }
