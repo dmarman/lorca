@@ -1,5 +1,8 @@
 'use strict';
 
+const fs = require('fs');
+const stemmer = require('./stemmer.js');
+
 class Sentimenter 
 {
     constructor()
@@ -9,16 +12,19 @@ class Sentimenter
 
     afinn(array)
     {
-        const fs = require('fs');
         var afinn = JSON.parse(fs.readFileSync('./dictionaries/afinnShortSortedSpanish.json', 'utf8'));
-
+        var afinnStem = {};
         var words = array;
         var score = 0;
         var negator = 1;
 
+        for(var token in afinn){
+            afinnStem[stemmer.stem(token)] = afinn[token];
+        }
+
         words.forEach((token) => {
-            if(afinn[token] != undefined){
-                score += negator*afinn[token];   
+            if(afinnStem[stemmer.stem(token)] != undefined){
+                score += negator*afinnStem[stemmer.stem(token)];   
                 // TODO jamás, ni. 
                 if(token == 'no' || token == 'nunca'){
                     negator = -1;
