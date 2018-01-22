@@ -1,5 +1,6 @@
 'use strict';
 
+const fs = require('fs');
 const stemmer = require('./src/stemmer.js');
 const syllabler = require('./src/syllabler.js');
 const sentimenter = require('./src/sentimenter.js');
@@ -452,6 +453,35 @@ class Lorca
                 return this;
             }
         }
+    }
+
+    corpusFrequency()
+    {
+        var list = JSON.parse(fs.readFileSync('./dictionaries/frequencyListRAE50000.json', 'utf8'));
+
+        if(!(this.out instanceof Array)){
+            this.words().get();        
+        }
+
+        for(var i = 0; i < this.out.length; i++){
+            if(this.out[i] instanceof Array){
+                for(var j = 0; j < this.out[i].length; j++){
+                    if(list[this.out[i][j]] != undefined){
+                        this.out[i][j] = list[this.out[i][j]];                                
+                    } else {
+                        this.out[i][j] = 0;                       
+                    }
+                }
+            } else {
+                if(list[this.out[i]] != undefined){
+                    this.out[i]= list[this.out[i]];                                
+                } else {
+                    this.out[i] = 0;                       
+                }
+            }
+        }
+
+        return this;
     }
 
 }

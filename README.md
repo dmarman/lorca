@@ -189,6 +189,21 @@ doc.concordance('relative').sort().get();
 
 doc.concordance().sort(3).get();
 // [ en: 2, hace: 2, verano: 1 ]
+
+// Get the relative frequency from a huge corpus given by RAE.
+doc.words().corpusFrequency().get();
+// [ 0.02775516,
+//   0.00008453,
+//   0.00075057,
+//   0.00007254,
+//   0.02775516,
+//   0.00004106,
+//   0.00075057,
+//   0.00007199 ]
+
+doc.sentences().words().corpusFrequency().get();
+// [ [ 0.02775516, 0.00008453, 0.00075057, 0.00007254 ],
+// [ 0.02775516, 0.00004106, 0.00075057, 0.00007199 ] ]
 ```
 
 ## Statistics
@@ -242,7 +257,10 @@ doc.ifsz().grade().get();
 
 ### AFINN
 
-Disclaimer: It uses a semi-automated translation of the original AFINN list. The list only contains words that are inside the 10.000 most used words. It has a total of 885 words. The ```sentiment()``` method calculates the relative value of each sentece and then it returns the relative values of those sentences. Positive values mean a positive sentiment and negative values mean negative sentiment.
+Disclaimer: It uses a semi-automated translation of the original AFINN list. The list only contains words that are inside the 10.000 most used words. It has a total of 885 words. The ```sentiment()``` method calculates the relative value of each sentece and then it returns the relative values of those sentences. 
+Positive values mean a positive sentiment and negative values mean negative sentiment.
+
+The sentiment algorithm stems the text input in order to reach a wider spectrum of words.
 
 ```javascript
 var doc = lorca('El plátano está malo.');
@@ -268,10 +286,9 @@ doc.sentences().words().sentiment()
 
 doc.sentiment();
 // -0.03333333333333329
-
 ```
 
-## Stemmer (Beta)
+## Stemmer
 
 Get the stem of any word in Spanish. The stemmer is based on the [Porter](http://snowball.tartarus.org/algorithms/spanish/stemmer.html) algorithm.
 You can also get the stemed concordance of your document.
@@ -292,7 +309,6 @@ doc.sentences().words().stem().get();
 var doc = lorca('Los niños juegan con las niñas.');
 doc.words().stem().concordance().sort().get();
 // { 'niñ': 2, los: 1, jueg: 1, con: 1, las: 1 }
-
 ```
 
 ## Reading Time
@@ -320,7 +336,6 @@ doc.find("verano");
 
 doc.sentences().find("verano");
 // [ [ 'verano' ], [] ]
-
 ```
 
 ## Testing
