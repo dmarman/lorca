@@ -2,7 +2,7 @@
 
 const stemmer = require('./src/stemmer.js');
 const syllabler = require('./src/syllabler.js');
-
+const sentimenter = require('./src/sentimenter.js');
 
 var lorca = function(input)
 {
@@ -18,7 +18,6 @@ class Lorca
         this.input = '';
         this.text = '';
         this.out = '';
-        this.list = {};
     }
 
     in()
@@ -408,41 +407,17 @@ class Lorca
         return 60*this.words().get().length/speed;
     }
 
-    calculateSentiment(array)
-    {
-        const fs = require('fs');
-        var afinn = JSON.parse(fs.readFileSync('./dictionaries/afinnShortSortedSpanish.json', 'utf8'));
-
-        var words = array;
-        var score = 0;
-        var negator = 1;
-
-            words.forEach((token) => {
-                if(afinn[token] != undefined){
-                    score += negator*afinn[token];   
-                    // TODO jamás, ni. 
-                    if(token == 'no' || token == 'nunca'){
-                        negator = -1;
-                    }
-                }
-            });
-        
-        score = score/words.length;                     
-
-        return score;
-    }
-
     sentiment()
     {        
         if(this.out instanceof Array){
             for(var i = 0; i < this.out.length; i++){
                 if(this.out[i] instanceof Array){
                     for(var j = 0; j < this.out[i].length; j++){
-                        this.out[i][j] = this.calculateSentiment(this.trimWords(this.out[i][j]));
+                        this.out[i][j] = sentimenter.afinn(this.trimWords(this.out[i][j]));
                     }
                 } else {
                     // Sentence calculation
-                    this.out[i] = this.calculateSentiment(this.trimWords(this.out[i]));                    
+                    this.out[i] = sentimenter.afinn(this.trimWords(this.out[i]));                    
                 }
             }
         } else {
@@ -457,52 +432,6 @@ class Lorca
         }
         
         return this.out;
-    }
-    
-    // Beta
-    trainSentiment(sentence, flag)
-    {
-        var tokens = this.trimWords(sentence);
-
-        for(var i = 0; i < tokens.length; i++){
-            if(this.list.hasOwnProperty(tokens[i])){
-                if(flag === true){
-                    this.list[tokens[i]].score += 1;
-                } else {
-                    this.list[tokens[i]].score -= 1;
-                }
-                this.list[tokens[i]].frequency += 1;                      
-            } else {
-                if(flag === true){
-                    this.list[tokens[i]] = {score: 1, frequency: 1};
-                } else {
-                    this.list[tokens[i]] = {score: -1, frequency: 1};                    
-                }
-            }
-        }
-
-        this.output = {};
-
-        for(var token in this.list){
-            this.output[token] = this.list[token].score/this.list[token].frequency; 
-        }
-   
-        return this.output;
-    }
-
-    // Beta
-    guess(string)
-    {
-        var words = this.trimWords(string);
-        var score = 0;
-        
-        words.forEach((item) => {
-            if(this.output[item] != undefined){
-                score += this.output[item];
-            }
-        });
-
-        return score;
     }
 
     stem(word)
