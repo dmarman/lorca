@@ -2,7 +2,7 @@
 
 # Lorca.js
 Lorca is a NLP library for Spanish written in javascript. Tokenization,
-concordance, stemmer, statistics, sentiment analysis, readability and more!
+concordance, stemmer, statistics, sentiment analysis, readability, tf-idf and more!
 
 ## Installation
 ### Client-side
@@ -309,6 +309,29 @@ doc.sentences().words().stem().get();
 var doc = lorca('Los niños juegan con las niñas.');
 doc.words().stem().concordance().sort().get();
 // { 'niñ': 2, los: 1, jueg: 1, con: 1, las: 1 }
+```
+
+## tf-idf
+
+The tf-idf has batteries included. It leverages a big frequency list to get the main words of any text.
+
+```javascript
+var doc = lorca('En verano hace calor. En invierno hace frío. El verano me gusta');
+
+doc.tfidf().sort().get();
+// { verano: 4117.747963402167,
+//   invierno: 2660.600722826124,
+//   frío: 2192.690048750771,
+//   calor: 2186.3476209394835,
+//   gusta: 2068.4919519114765,
+//   hace: 478.20393517589827,
+//   me: -748.0756841870855,
+//   el: -2833.037926222993,
+//   en: -5539.036281420974 }
+
+doc.tfidf().sort(2).get();
+// { verano: 4117.747963402167,
+//   invierno: 2660.600722826124 }
 ```
 
 ## Reading Time

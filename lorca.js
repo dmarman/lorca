@@ -455,30 +455,45 @@ class Lorca
         }
     }
 
-    corpusFrequency()
+    corpusFrequency(token)
     {
         var list = JSON.parse(fs.readFileSync('./dictionaries/frequencyListRAE50000.json', 'utf8'));
 
-        if(!(this.out instanceof Array)){
-            this.words().get();        
-        }
+        if(token){            
+            return list[token];
+        } else {
+            if(!(this.out instanceof Array)){
+                this.words().get();        
+            }
 
-        for(var i = 0; i < this.out.length; i++){
-            if(this.out[i] instanceof Array){
-                for(var j = 0; j < this.out[i].length; j++){
-                    if(list[this.out[i][j]] != undefined){
-                        this.out[i][j] = list[this.out[i][j]];                                
+            for(var i = 0; i < this.out.length; i++){
+                if(this.out[i] instanceof Array){
+                    for(var j = 0; j < this.out[i].length; j++){
+                        if(list[this.out[i][j]] != undefined){
+                            this.out[i][j] = list[this.out[i][j]];                                
+                        } else {
+                            this.out[i][j] = 0;                       
+                        }
+                    }
+                } else {
+                    if(list[this.out[i]] != undefined){
+                        this.out[i]= list[this.out[i]];                                
                     } else {
-                        this.out[i][j] = 0;                       
+                        this.out[i] = 0;                       
                     }
                 }
-            } else {
-                if(list[this.out[i]] != undefined){
-                    this.out[i]= list[this.out[i]];                                
-                } else {
-                    this.out[i] = 0;                       
-                }
             }
+        }
+
+        return this;
+    }
+
+    tfidf()
+    {
+        var frequencies = this.words().concordance('relative').get();
+        var idf = {};
+        for (var token in frequencies){
+            this.out[token] = -frequencies[token]/0.0001*Math.log(this.corpusFrequency(token)/0.001);
         }
 
         return this;

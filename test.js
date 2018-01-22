@@ -15,10 +15,10 @@ doc.out = stem;
 */
 //console.log(doc.concordance().sort(200).get());
 
-var doc = lorca('En verano hace calor. En invierno hace frío');
+var doc = lorca('En verano hace calor. En invierno hace frío. El verano me gusta');
 
 
-console.log(doc.sentences().words().corpusFrequency().get());
+console.log(doc.tfidf().sort().get());
 
 //var output = doc.words().sentiment();
 //console.log(output);
