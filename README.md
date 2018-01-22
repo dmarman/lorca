@@ -328,3 +328,7 @@ doc.sentences().find("verano");
 ```bash
 $ npm test
 ```
+
+## Thanks to
+
+[Vic](https://github.com/vic/silabas.js) - for his spanish hyphenator in javascript. 
