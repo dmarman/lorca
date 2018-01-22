@@ -1,0 +1,395 @@
+{
+  "vate": {
+    "syllables": [
+      "va",
+      "te"
+    ]
+  },
+  "compto": {
+    "syllables": [
+      "com",
+      "pto"
+    ]
+  },
+  "aguacate": {
+    "syllables": [
+      "a",
+      "gua",
+      "ca",
+      "te"
+    ]
+  },
+  "árbol": {
+    "syllables": [
+      "ár",
+      "bol"
+    ]
+  },
+  "palabra": {
+    "syllables": [
+      "pa",
+      "la",
+      "bra"
+    ]
+  },
+  "estocólmo": {
+    "syllables": [
+      "es",
+      "to",
+      "cól",
+      "mo"
+    ]
+  },
+  "idílico": {
+    "syllables": [
+      "i",
+      "dí",
+      "li",
+      "co"
+    ]
+  },
+  "silueta": {
+    "syllables": [
+      "si",
+      "lue",
+      "ta"
+    ]
+  },
+  "evocativo": {
+    "syllables": [
+      "e",
+      "vo",
+      "ca",
+      "ti",
+      "vo"
+    ]
+  },
+  "irrumación": {
+    "syllables": [
+      "i",
+      "rru",
+      "ma",
+      "ción"
+    ]
+  },
+  "inefable": {
+    "syllables": [
+      "i",
+      "ne",
+      "fa",
+      "ble"
+    ]
+  },
+  "hipopótamo": {
+    "syllables": [
+      "hi",
+      "po",
+      "pó",
+      "ta",
+      "mo"
+    ]
+  },
+  "ay": {
+    "syllables": [
+      "ay"
+    ]
+  },
+  "hay": {
+    "syllables": [
+      "hay"
+    ]
+  },
+  "huy": {
+    "syllables": [
+      "huy"
+    ]
+  },
+  "maguey": {
+    "syllables": [
+      "ma",
+      "guey"
+    ]
+  },
+  "rey": {
+    "syllables": [
+      "rey"
+    ]
+  },
+  "hoy": {
+    "syllables": [
+      "hoy"
+    ]
+  },
+  "tendedero": {
+    "syllables": [
+      "ten",
+      "de",
+      "de",
+      "ro"
+    ]
+  },
+  "Abuhado": {
+    "syllables": [
+      "a",
+      "buha",
+      "do"
+    ]
+  },
+  "Acmé": {
+    "syllables": [
+      "ac",
+      "mé"
+    ]
+  },
+  "Barbián": {
+    "syllables": [
+      "bar",
+      "bián"
+    ]
+  },
+  "Haiga": {
+    "syllables": [
+      "hai",
+      "ga"
+    ]
+  },
+  "Mamporrero": {
+    "syllables": [
+      "mam",
+      "po",
+      "rre",
+      "ro"
+    ]
+  },
+  "Murciégalo": {
+    "syllables": [
+      "mur",
+      "cié",
+      "ga",
+      "lo"
+    ]
+  },
+  "Orate": {
+    "syllables": [
+      "o",
+      "ra",
+      "te"
+    ]
+  },
+  "Uebos": {
+    "syllables": [
+      "ue",
+      "bos"
+    ]
+  },
+  "Absceso": {
+    "syllables": [
+      "abs",
+      "ce",
+      "so"
+    ]
+  },
+  "Abyección": {
+    "syllables": [
+      "ab",
+      "yec",
+      "ción"
+    ]
+  },
+  "Aherrojar": {
+    "syllables": [
+      "a",
+      "he",
+      "rro",
+      "jar"
+    ]
+  },
+  "Alícuota": {
+    "syllables": [
+      "a",
+      "lí",
+      "cuo",
+      "ta"
+    ]
+  },
+  "considerar": {
+    "syllables": [
+      "con",
+      "si",
+      "de",
+      "rar"
+    ]
+  },
+  "queso": {
+    "syllables": [
+      "que",
+      "so"
+    ]
+  },
+  "güero": {
+    "syllables": [
+      "güe",
+      "ro"
+    ]
+  },
+  "averiguáis": {
+    "syllables": [
+      "a",
+      "ve",
+      "ri",
+      "guáis"
+    ]
+  },
+  "Uruguay": {
+    "syllables": [
+      "u",
+      "ru",
+      "guay"
+    ]
+  },
+  "despreciéis": {
+    "syllables": [
+      "des",
+      "pre",
+      "ciéis"
+    ]
+  },
+  "huía": {
+    "syllables": [
+      "huí",
+      "a"
+    ]
+  },
+  "azcapotzalco": {
+    "syllables": [
+      "az",
+      "ca",
+      "pot",
+      "zal",
+      "co"
+    ]
+  },
+  "devenir": {
+    "syllables": [
+      "de",
+      "ve",
+      "nir"
+    ]
+  },
+  "Huaico": {
+    "syllables": [
+      "huai",
+      "co"
+    ]
+  },
+  "huaura": {
+    "syllables": [
+      "huau",
+      "ra"
+    ]
+  },
+  "Carajo": {
+    "syllables": [
+      "ca",
+      "ra",
+      "jo"
+    ]
+  },
+  "huauzontle": {
+    "syllables": [
+      "huau",
+      "zon",
+      "tle"
+    ]
+  },
+  "vahee": {
+    "syllables": [
+      "va",
+      "he",
+      "e"
+    ]
+  },
+  "pleiotropía": {
+    "syllables": [
+      "ple",
+      "io",
+      "tro",
+      "pí",
+      "a"
+    ]
+  },
+  "Vieira": {
+    "syllables": [
+      "viei",
+      "ra"
+    ]
+  },
+  "desyugar": {
+    "syllables": [
+      "de",
+      "syu",
+      "gar"
+    ]
+  },
+  "percepción": {
+    "syllables": [
+      "per",
+      "cep",
+      "ción"
+    ]
+  },
+  "guanábana": {
+    "syllables": [
+      "gua",
+      "ná",
+      "ba",
+      "na"
+    ]
+  },
+  "fascinación": {
+    "syllables": [
+      "fas",
+      "ci",
+      "na",
+      "ción"
+    ]
+  },
+  "despilfarrar": {
+    "syllables": [
+      "des",
+      "pil",
+      "fa",
+      "rrar"
+    ]
+  },
+  "resilencia": {
+    "syllables": [
+      "re",
+      "si",
+      "len",
+      "cia"
+    ]
+  },
+  "botarga": {
+    "syllables": [
+      "bo",
+      "tar",
+      "ga"
+    ]
+  },
+  "tentempie": {
+    "syllables": [
+      "ten",
+      "tem",
+      "pie"
+    ]
+  },
+  "rimbombante": {
+    "syllables": [
+      "rim",
+      "bom",
+      "ban",
+      "te"
+    ]
+  }
+}

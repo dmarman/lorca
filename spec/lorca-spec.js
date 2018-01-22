@@ -32,14 +32,6 @@ describe("get words", function () {
   });
 }); 
 
-describe("get syllables", function () {
-  it("should return array of syllables", function () {
-    var doc = lorca('<p>En verano hace calor. En invierno hace frío</p>');
-    var output = doc.syllables().get();
-    expect(output).toEqual([ 'en', 've', 'ra', 'no', 'ha', 'ce', 'ca', 'lor.', 'en', 'in', 'vier', 'no', 'ha', 'ce','frí', 'o.' ]);
-  });
-}); 
-
 describe("get unique words", function () {
   it("should return array of unique words", function () {
     var doc = lorca('<p>En verano hace calor. En invierno hace frío</p>');
@@ -61,30 +53,6 @@ describe("get words of sentences", function () {
     var doc = lorca('<p>En verano hace calor. En invierno hace frío</p>');
     var output = doc.sentences().words().get();
     expect(output).toEqual([ [ 'en', 'verano', 'hace', 'calor' ], [ 'en', 'invierno', 'hace', 'frío'] ]);
-  });
-}); 
-
-describe("get syllables of sentences", function () {
-  it("should return array of sentences with array of syllables", function () {
-    var doc = lorca('<p>En verano hace calor. En invierno hace frío</p>');
-    var output = doc.sentences().syllables().get();
-    expect(output).toEqual([ [ 'en', 've', 'ra', 'no', 'ha', 'ce', 'ca', 'lor.' ], [ 'en', 'in', 'vier', 'no', 'ha', 'ce', 'frí', 'o.' ] ]);
-  });
-}); 
-
-describe("get syllables of words of sentences", function () {
-  it("should return array of sentences with array of words with syllables", function () {
-    var doc = lorca('<p>En verano hace calor. En invierno hace frío</p>');
-    var output = doc.sentences().words().syllables().get();
-    expect(output).toEqual([ [ [ 'en' ], [ 've', 'ra', 'no' ], [ 'ha', 'ce' ], [ 'ca', 'lor' ] ], [ [ 'en' ], [ 'in', 'vier', 'no' ], [ 'ha', 'ce' ], [ 'frí', 'o' ] ] ]);
-  });
-}); 
-
-describe("get syllables of words", function () {
-  it("should return array of sentences with array of words", function () {
-    var doc = lorca('<p>En verano hace calor. En invierno hace frío</p>');
-    var output = doc.words().syllables().get();
-    expect(output).toEqual([ [ 'en' ], [ 've', 'ra', 'no' ], [ 'ha', 'ce' ], [ 'ca', 'lor' ], [ 'en' ], [ 'in', 'vier', 'no' ], [ 'ha', 'ce' ], [ 'frí', 'o' ] ]);
   });
 }); 
 
