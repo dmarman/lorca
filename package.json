@@ -21,6 +21,7 @@
   "author": "Domingo Martín Mancera <dmm.martin@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "jasmine": "^2.9.0"
+    "jasmine": "^2.9.0",
+    "xml2js": "^0.4.19"
   }
 }

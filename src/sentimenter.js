@@ -7,24 +7,60 @@ class Sentimenter
 {
     constructor()
     {
+        this.afinnList = JSON.parse(fs.readFileSync('./dictionaries/afinnShortSortedSpanish.json', 'utf8'));
+        this.senticonList = JSON.parse(fs.readFileSync('./dictionaries/senticon.json', 'utf8'));
         this.list = {};
+        this.afinnStem = {};
+        this.senticonStem = {}
+        
+        for(var token in this.afinnList){
+            this.afinnStem[stemmer.stem(token)] = this.afinnList[token];
+        }
+
+        for(var token in this.senticonList){
+            this.senticonStem[stemmer.stem(token)] = this.senticonList[token].pol;
+        }
+    }
+
+    getSentiment(array, type)
+    {      
+        if(type === 'afinn'){
+            return this.afinn(array);
+        } else if (type == 'senticon') {
+            return this.senticon(array);
+        }
     }
 
     afinn(array)
     {
-        var afinn = JSON.parse(fs.readFileSync('./dictionaries/afinnShortSortedSpanish.json', 'utf8'));
-        var afinnStem = {};
         var words = array;
         var score = 0;
         var negator = 1;
 
-        for(var token in afinn){
-            afinnStem[stemmer.stem(token)] = afinn[token];
-        }
+        words.forEach((token) => {
+            if(this.afinnStem[stemmer.stem(token)] != undefined){
+                score += negator*this.afinnStem[stemmer.stem(token)];   
+                // TODO jamás, ni. 
+                if(token == 'no' || token == 'nunca'){
+                    negator = -1;
+                }
+            }
+        });
+        
+        score = score/words.length;                     
+
+        return score;
+    }
+
+    senticon(array)
+    {
+        var words = array;
+        var score = 0;
+        var negator = 1;
 
         words.forEach((token) => {
-            if(afinnStem[stemmer.stem(token)] != undefined){
-                score += negator*afinnStem[stemmer.stem(token)];   
+            if(this.senticonStem[stemmer.stem(token)] != undefined){
+                score += negator*this.senticonStem[stemmer.stem(token)];   
                 // TODO jamás, ni. 
                 if(token == 'no' || token == 'nunca'){
                     negator = -1;

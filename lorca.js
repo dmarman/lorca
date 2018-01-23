@@ -408,22 +408,24 @@ class Lorca
         return 60*this.words().get().length/speed;
     }
 
-    sentiment()
-    {        
+    sentiment(type)
+    {    
+        type = type || 'afinn';
+
         if(this.out instanceof Array){
             for(var i = 0; i < this.out.length; i++){
                 if(this.out[i] instanceof Array){
-                    for(var j = 0; j < this.out[i].length; j++){
-                        this.out[i][j] = sentimenter.afinn(this.trimWords(this.out[i][j]));
+                    for(var j = 0; j < this.out[i].length; j++){                        
+                        this.out[i][j] = sentimenter.getSentiment(this.trimWords(this.out[i][j]), type);
                     }
                 } else {
                     // Sentence calculation
-                    this.out[i] = sentimenter.afinn(this.trimWords(this.out[i]));                    
+                    this.out[i] = sentimenter.getSentiment(this.trimWords(this.out[i]), type);
                 }
             }
         } else {
             var sentences = this.sentences().get();
-            var sentenceSentiments = this.sentiment();
+            var sentenceSentiments = this.sentiment(type);
             
             var add = (a, b) => {
                 return a + b
@@ -493,7 +495,7 @@ class Lorca
         if(!(this.out instanceof Array)){
             var frequencies = this.words().concordance('relative').get();        
         }
-        
+
         var idf = {};
         for (var token in frequencies){
             this.out[token] = -frequencies[token]/0.0001*Math.log(this.corpusFrequency(token)/0.001);

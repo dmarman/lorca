@@ -288,6 +288,17 @@ doc.sentiment();
 // -0.03333333333333329
 ```
 
+### ML-SENTICON
+
+This method uses a powerful lemma-level lexicon created in 2014 by [Fermín L. Cruz, José A. Troyano, Beatriz Pontes and F. Javier Ortega](https://www.sciencedirect.com/science/article/pii/S0957417414001997?via%3Dihub). 
+
+```javascript
+var doc = lorca('El plátano está malo.');
+
+doc.sentiment('senticon');
+// -0.09375
+```
+
 ## Stemmer
 
 Get the stem of any word in Spanish. The stemmer is based on the [Porter](http://snowball.tartarus.org/algorithms/spanish/stemmer.html) algorithm.
@@ -370,3 +381,4 @@ $ npm test
 ## Thanks to
 
 [Vic](https://github.com/vic/silabas.js) - for his Spanish hyphenator in javascript. 
+Cruz, Fermín L., José A. Troyano, Beatriz Pontes, F. Javier Ortega. [Building layered, multilingual sentiment lexicons at synset and lemma levels](https://www.sciencedirect.com/science/article/pii/S0957417414001997?via%3Dihub), Expert Systems with Applications, 2014. For their senticon list in sentiment analysis.
