@@ -1,3 +1,4 @@
 .idea/
 .gitignore
 node_modules
+/dictionaries/SBW-vectors-300-min5.txt
