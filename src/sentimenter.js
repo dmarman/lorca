@@ -1,14 +1,13 @@
 'use strict';
 
-const fs = require('fs');
 const stemmer = require('./stemmer.js');
 
 class Sentimenter 
 {
     constructor()
     {
-        this.afinnList = JSON.parse(fs.readFileSync('./dictionaries/afinnShortSortedSpanish.json', 'utf8'));
-        this.senticonList = JSON.parse(fs.readFileSync('./dictionaries/senticon.json', 'utf8'));
+        this.afinnList = require('../dictionaries/afinnShortSortedSpanish');
+        this.senticonList = require('../dictionaries/senticon.json');
         this.list = {};
         this.afinnStem = {};
         this.senticonStem = {}
