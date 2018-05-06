@@ -7,7 +7,7 @@ concordance, stemmer, statistics, sentiment analysis, readability, tf-idf and mo
 ## Installation
 ### Client-side
 
-Not suported yet, but soon.
+Not supported yet, but soon.
 
 ### Server-side
 
@@ -157,7 +157,7 @@ doc.sentences().adverbs().get();
 // [ [ 'realmente' ], [] ]
 ```
 
-## Pasive Voice
+## Passive Voice
 
 Test whether a sentence is passive.
 
@@ -257,7 +257,7 @@ doc.ifsz().grade().get();
 
 ### AFINN
 
-Disclaimer: It uses a semi-automated translation of the original AFINN list. The list only contains words that are inside the 10.000 most used words. It has a total of 885 words. The ```sentiment()``` method calculates the relative value of each sentece and then it returns the relative values of those sentences. 
+Disclaimer: It uses a semi-automated translation of the original AFINN list. The list only contains words that are inside the 10.000 most used words. It has a total of 885 words. The ```sentiment()``` method calculates the relative value of each sentence and then it returns the relative values of those sentences. 
 Positive values mean a positive sentiment and negative values mean negative sentiment.
 
 The sentiment algorithm stems the text input in order to reach a wider spectrum of words.
@@ -302,7 +302,7 @@ doc.sentiment('senticon');
 ## Stemmer
 
 Get the stem of any word in Spanish. The stemmer is based on the [Porter](http://snowball.tartarus.org/algorithms/spanish/stemmer.html) algorithm.
-You can also get the stemed concordance of your document.
+You can also get the stemmed concordance of your document.
 
 ```javascript
 doc.stem('recomendaciones');
