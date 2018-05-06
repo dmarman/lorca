@@ -459,7 +459,7 @@ class Lorca
 
     corpusFrequency(token)
     {
-        var list = JSON.parse(fs.readFileSync('./dictionaries/frequencyListRAE50000.json', 'utf8'));
+        var list = require('./dictionaries/frequencyListRAE50000.json', 'utf8');
 
         if(token){            
             return list[token];
