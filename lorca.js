@@ -5,6 +5,8 @@ const stemmer = require('./src/stemmer.js');
 const syllabler = require('./src/syllabler.js');
 const sentimenter = require('./src/sentimenter.js');
 
+var cachedList
+
 var lorca = function(input)
 {
     var wrapper = new Lorca();
@@ -459,7 +461,7 @@ class Lorca
 
     corpusFrequency(token)
     {
-        var list = require('./dictionaries/frequencyListRAE50000.json', 'utf8');
+        var list = cachedList = cachedList || require('./dictionaries/frequencyListRAE50000.json', 'utf8');
 
         if(token){            
             return list[token];
